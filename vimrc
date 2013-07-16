@@ -7,6 +7,9 @@ set number            " Show line numbers
 set ruler             " Show line and column number
 syntax enable         " Turn on syntax highlighting allowing local overrides
 set encoding=utf-8    " Set default encoding to UTF-8
+set autoindent
+filetype on
+filetype plugin indent on
 
 ""
 "" Whitespace
@@ -67,5 +70,10 @@ set wildignore+=*.swp,*~,._*
 set backupdir^=~/.vim/_backup//    " where to put backup files.
 set directory^=~/.vim/_temp//      " where to put swap files.
 
+"" NERDTREE customizations
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") ==1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 "" Starting pathogen
 execute pathogen#infect()
+
