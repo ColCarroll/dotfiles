@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="pylintrc bashrc vimrc"    # list of files/folders to symlink in homedir
+files="pylintrc bashrc vimrc gvimrc"    # list of files/folders to symlink in homedir
 bundle=~/.vim/bundle  # vim plugin directory
 vimauto=~/.vim/autoload # vim autoload directory
 
@@ -38,6 +38,7 @@ done
 # Make .vim folder, install pathogen there
 mkdir -p $vimauto $bundle; 
 curl -Sso $vimauto/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+ln -s $dir/colors ~/.vim/colors
 
 # Add some vim plugins
 cd $bundle
