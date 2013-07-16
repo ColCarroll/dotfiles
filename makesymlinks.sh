@@ -8,7 +8,9 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="pylintrc gvimrc bashrc vimrc.after vimrc"    # list of files/folders to symlink in homedir
+files="pylintrc bashrc vimrc"    # list of files/folders to symlink in homedir
+bundle=~/.vim/bundle  # vim plugin directory
+vimauto=~/.vim/autoload # vim autoload directory
 
 ##########
 
@@ -32,3 +34,14 @@ for file in $files; do
     echo -e "Creating symlink to $file in home directory.\n"
     ln -snf $dir/$file ~/.$file
 done
+
+# Make .vim folder, install pathogen there
+mkdir -p $vimauto $bundle; 
+curl -Sso $vimauto/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+
+# Add some vim plugins
+cd $bundle
+git clone https://github.com/scrooloose/syntastic.git #syntastic for syntax checking
+git clone https://github.com/scrooloose/nerdtree.git #nerdtree menu
+git clone https://github.com/ervandew/supertab.git #tab completion
+git clone https://github.com/tpope/vim-fugitive.git #fugitive git support
