@@ -105,3 +105,20 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# Hadoop configuration
+export HADOOP_PREFIX=/usr/local/hadoop
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64
+
+unalias fs &> /dev/null
+alias fs="hadoop fs"
+unalias hls &> /dev/null
+alias hls="fs -ls"
+
+lxohead () {
+    hadoop fs -cat $1 | lzop -dc | head -1000 | less
+  }
+
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:/usr/local/pig/bin
+function gvim () { (/usr/bin/gvim -f "$@" &) }
