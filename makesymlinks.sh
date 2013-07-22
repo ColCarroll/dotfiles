@@ -46,3 +46,4 @@ git clone https://github.com/scrooloose/syntastic.git #syntastic for syntax chec
 git clone https://github.com/scrooloose/nerdtree.git #nerdtree menu
 git clone https://github.com/ervandew/supertab.git #tab completion
 git clone https://github.com/tpope/vim-fugitive.git #fugitive git support
+git clone https://github.com/vim-scripts/HTML-AutoCloseTag.git #html auto close tag
