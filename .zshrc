@@ -87,16 +87,17 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias pyc="rm *.pyc"
+alias pyc="rm *.pyc && rm -rf __pycache__"
 alias ta="tmux attach-session -t"
 alias tl="tmux list-session"
 alias tn="tmux new-session -s"
 
 export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 export NVM_DIR=~/.nvm
 export EDITOR="/usr/local/bin/vim"
 source ~/.localrc
 alias gcommits="git shortlog -n --since='one week'"
-
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 # archey gives some stats on the machine and draws a picture
 archey

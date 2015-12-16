@@ -54,6 +54,7 @@ endif
 
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-" ,"trimming empty <", "is not recognized!", "discarding unexpected"]
 let g:syntastic_javascript_checkers=['eslint'] " angular elements 
+let g:syntastic_python_python_exec='python'
 
 " List chars
 set listchars=""                  " Reset the listchars
