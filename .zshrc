@@ -99,5 +99,6 @@ export EDITOR="/usr/local/bin/vim"
 source ~/.localrc
 alias gcommits="git shortlog -n --since='one week'"
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+alias gbranch="git for-each-ref --sort=-committerdate --format '%(color:green)%(authorname)%(color:reset)%09%(committerdate)%09%(color:green)%(refname)%(color:reset)%09%(subject)' refs/heads/"
 # archey gives some stats on the machine and draws a picture
 archey
