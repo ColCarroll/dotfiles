@@ -41,12 +41,6 @@ ZSH_THEME="robbyrussell"
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
-
-# add timestamps to ~/.bash_history
-export HISTTIMEFORMAT="%F %T "
-# "unlimited" ~/.bash_history
-export HISTSIZE= HISTFILESIZE=
-
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -54,7 +48,7 @@ export HISTSIZE= HISTFILESIZE=
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git brew docker history)
 
 # User configuration
 
@@ -62,7 +56,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-
+#
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -84,6 +78,12 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+
+# add timestamps to ~/.bash_history
+export HISTTIMEFORMAT="%F %T "
+# "unlimited" ~/.bash_history
+export HISTSIZE= HISTFILESIZE=
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"

@@ -19,6 +19,8 @@ Plugin 'Raimondi/delimitMate'    " Automate matching delimiters
 Plugin 'scrooloose/syntastic'   " For linting
 Plugin 'digitaltoad/vim-jade.git'
 Plugin 'fatih/vim-go'
+Plugin 'JuliaLang/julia-vim'
+Plugin 'jmcantrell/vim-virtualenv'
 
 call vundle#end()
 filetype plugin indent on
