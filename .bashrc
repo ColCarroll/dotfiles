@@ -1,12 +1,9 @@
-# add git prompt
-# https://github.com/git/git/tree/master/contrib/completion
-DOTFILES="${HOME}/.dotfiles"
+#!/bin/bash
 
-GIT_PROMPT="${DOTFILES}/.git-prompt.sh"
-GIT_COMPLETION="${DOTFILES}/.git-completion.sh"
-
-if [ -f "${GIT_PROMPT}" ]; then source "${GIT_PROMPT}"; fi
-if [ -f "${GIT_COMPLETION}" ]; then source "${GIT_COMPLETION}"; fi
+# git completion, and other bash completion
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+    . "$(brew --prefix)/etc/bash_completion"
+fi
 
 # tiny x if there are git changes
 export GIT_PS1_SHOWDIRTYSTATE=1
@@ -57,7 +54,7 @@ export PYENV_ROOT=/usr/local/var/pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # add install-specific stuff to .localrc
-source ~/.localrc
+source "${HOME}/.localrc"
 
 # archey gives some stats on the machine and draws a picture
 # `brew install archey`

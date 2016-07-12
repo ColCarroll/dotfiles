@@ -35,6 +35,7 @@ echo -e "\nInstalling packages from regular brew"
 BREW_PACKAGES=(
   "bash" # might as well get an updated terminal shell
   "git" # version control https://git-scm.com/
+  "bash-completion" # bash completion for git and other things  https://github.com/scop/bash-completion
   "gcc" # gnu compiler collection https://gcc.gnu.org/
   "vim" # vim4lyfe http://www.vim.org/
   "tmux" # window management https://tmux.github.io/
@@ -108,13 +109,11 @@ echo -e "\nInstalling vim plugins"
 vim +PluginInstall +qall
 
 echo -e "\nMaking sure localrc exists"
-LOCALRC=~/.localrc
-if ! [ -f ${LOCALRC} ]; then
+LOCALRC="${HOME}/.localrc"
+if ! [ -f "${LOCALRC}" ]; then
   echo "Creating empty $LOCALRC"
   touch "${LOCALRC}"
 fi
-
-source "${HOME}/.bashrc"
 
 echo -e "The following packages are outdated and may be upgraded using \`brew upgrade $PKG\`:\n"
 brew outdated
