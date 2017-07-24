@@ -10,17 +10,15 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-" Some javascript plugins
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
-
-Plugin 'Raimondi/delimitMate'    " Automate matching delimiters
-Plugin 'scrooloose/syntastic'   " For linting
-Plugin 'digitaltoad/vim-jade.git'
-Plugin 'fatih/vim-go'
-Plugin 'JuliaLang/julia-vim'
+Plugin 'ctrlpvim/ctrlp.vim'               " Fuzzy file search
+Plugin 'vim-airline/vim-airline'          " Pretty bar on the bottom
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'mileszs/ack.vim'                  " ctrl+F to search
+Plugin 'w0rp/ale'                         " Python linting
+Plugin 'Raimondi/delimitMate'             " Automate matching delimiters
 Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'davidhalter/jedi-vim'             " Completion for python
 
 call vundle#end()
 filetype plugin indent on
@@ -35,6 +33,19 @@ syntax enable         " Turn on syntax highlighting allowing local overrides
 set background=dark
 set encoding=utf-8    " Set default encoding to UTF-8
 set autoindent
+
+""
+"" netrw
+""
+let g:netrw_banner = 0 " netrw file explorer does not need a banner
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4 " open new files in old window
+let g:netrw_altv = 1
+let g:netrw_winsize = 15
+augroup ProjectDrawer
+  autocmd!
+  autocmd VimEnter * :Vexplore
+augroup END
 
 ""
 "" Whitespace
@@ -53,10 +64,6 @@ autocmd BufWritePre *.py :%s/\s\+$//e " deletes whitespace on save
 if exists("g:enable_mvim_shift_arrow")
   let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
 endif
-
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-" ,"trimming empty <", "is not recognized!", "discarding unexpected"]
-let g:syntastic_javascript_checkers=['eslint'] " angular elements 
-let g:syntastic_python_python_exec='python'
 
 " List chars
 set listchars=""                  " Reset the listchars
@@ -100,3 +107,30 @@ set wildignore+=*.swp,*~,._*
 
 set backupdir^=~/.vim/_backup//    " where to put backup files.
 set directory^=~/.vim/_temp//      " where to put swap files.
+
+""
+"" CtrlP settings
+""
+
+" Ignore gitignored files
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+""
+"" Powerline settings
+""
+
+let g:Powerline_symbols = 'fancy'
+
+""
+"" Use ag for code search
+""
+
+let g:ackprg = 'ag --vimgrep'
+nmap <C-F> :Ack<space>
+
+""
+"" Set up automatic linter
+""
+
+let g:ale_lint_delay = 3000
+let g:ale_python_pylint_executable = 'python -m pylint'

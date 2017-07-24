@@ -68,13 +68,3 @@ source "${HOME}/.localrc"
 # archey gives some stats on the machine and draws a picture
 # `brew install archey`
 if which archey > /dev/null; then archey; fi
-
-# convert code snippets to pastable rich text
-function light() {
-  if [ -z "$2" ]
-    then src="pbpaste"
-  else
-    src="cat $2"
-  fi
-  $src | highlight -O rtf --syntax $1 --font Monaco-bold --font-size 24 | pbcopy
-}

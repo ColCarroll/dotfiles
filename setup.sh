@@ -47,6 +47,7 @@ BREW_PACKAGES=(
   "pyenv" # manage python versions.  https://github.com/yyuu/pyenv
   "nvm" # manage node versions https://github.com/creationix/nvm
   "node" # javascript runtime https://nodejs.org/en/
+  "the_silver_searcher" # ag for code search https://github.com/ggreer/the_silver_searcher
 )
 
 for pkg in "${BREW_PACKAGES[@]}"; do
