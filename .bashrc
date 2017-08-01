@@ -64,7 +64,3 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # add install-specific stuff to .localrc
 source "${HOME}/.localrc"
-
-# archey gives some stats on the machine and draws a picture
-# `brew install archey`
-if which archey > /dev/null; then archey; fi

@@ -18,7 +18,6 @@ Plugin 'mileszs/ack.vim'                  " ctrl+F to search
 Plugin 'w0rp/ale'                         " Python linting
 Plugin 'Raimondi/delimitMate'             " Automate matching delimiters
 Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'davidhalter/jedi-vim'             " Completion for python
 
 call vundle#end()
 filetype plugin indent on
@@ -33,6 +32,7 @@ syntax enable         " Turn on syntax highlighting allowing local overrides
 set background=dark
 set encoding=utf-8    " Set default encoding to UTF-8
 set autoindent
+set clipboard=unnamed
 
 ""
 "" netrw
@@ -134,3 +134,11 @@ nmap <C-F> :Ack<space>
 
 let g:ale_lint_delay = 3000
 let g:ale_python_pylint_executable = 'python -m pylint'
+
+
+""
+"" Highlight over 100 characters long
+""
+
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%100v.\+/

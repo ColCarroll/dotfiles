@@ -41,13 +41,13 @@ BREW_PACKAGES=(
   "tmux" # window management https://tmux.github.io/
   "wget" # curl alternative https://www.gnu.org/software/wget/
   "jq" # handle json from command line  https://github.com/stedolan/jq
-  "archey" # pretty startup script https://obihann.github.io/archey-osx/
   "go" # fun programming https://golang.org/
   "r" # make hadley proud https://cran.r-project.org/
   "pyenv" # manage python versions.  https://github.com/yyuu/pyenv
   "nvm" # manage node versions https://github.com/creationix/nvm
   "node" # javascript runtime https://nodejs.org/en/
   "the_silver_searcher" # ag for code search https://github.com/ggreer/the_silver_searcher
+  "reattach-to-user-namespace" # lets you copy code from vim in tmux https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 )
 
 for pkg in "${BREW_PACKAGES[@]}"; do
@@ -82,6 +82,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 FILES_TO_LINK=(
   ".bashrc" # bash configuration
   ".vimrc" # vim goodness
+  ".tmux.conf" # tmux configuration
 )
 for filename in "${FILES_TO_LINK[@]}"; do
   file="${DIR}/${filename}"
