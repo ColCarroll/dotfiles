@@ -31,6 +31,10 @@ function vn { [ ! -d $(virtualenv_dir) ] && virtualenv $(virtualenv_dir) ; }
 function va { source $(virtualenv_dir)/bin/activate ; }
 alias vd="deactivate"
 
+alias cn='pyenv virtualenv $(pyenv version-name) "${PWD##*/}"'
+alias ca='pyenv activate "${PWD##*/}"'
+alias cdd='pyenv deactivate'
+
 # setup go
 export GOPATH="${HOME}/go"
 export PATH=$PATH:"${GOPATH}/bin"
@@ -61,6 +65,7 @@ bind "set show-all-if-ambiguous on"
 # `brew install pyenv`
 export PYENV_ROOT=/usr/local/var/pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv-virtualenv > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # add install-specific stuff to .localrc
 source "${HOME}/.localrc"

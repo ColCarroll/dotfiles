@@ -44,6 +44,7 @@ BREW_PACKAGES=(
   "go" # fun programming https://golang.org/
   "r" # make hadley proud https://cran.r-project.org/
   "pyenv" # manage python versions.  https://github.com/yyuu/pyenv
+  "pyenv-virtualenv" # lets pyenv play reasonably well with conda.  https://github.com/yyuu/pyenv
   "nvm" # manage node versions https://github.com/creationix/nvm
   "node" # javascript runtime https://nodejs.org/en/
   "the_silver_searcher" # ag for code search https://github.com/ggreer/the_silver_searcher
