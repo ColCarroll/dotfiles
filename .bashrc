@@ -26,14 +26,11 @@ alias tl="tmux list-session"
 alias tn="tmux new-session -s"
 
 # virtualenv aliases
-function virtualenv_dir { echo "$HOME"/.venv/"${PWD##*/}" ; }
-function vn { [ ! -d $(virtualenv_dir) ] && virtualenv $(virtualenv_dir) ; }
-function va { source $(virtualenv_dir)/bin/activate ; }
-alias vd="deactivate"
-
-alias cn='pyenv virtualenv $(pyenv version-name) "${PWD##*/}"'
-alias ca='pyenv activate "${PWD##*/}"'
-alias cdd='pyenv deactivate'
+function virtualenv_name { echo "${PWD##*/}" ; }
+function vn { pyenv virtualenv "$(virtualenv_name)" ; }
+function va { pyenv activate "$(virtualenv_name)" ; }
+alias vd="pyenv deactivate"
+function vdd { pyenv uninstall "$(virtualenv_name)" ; }
 
 # setup go
 export GOPATH="${HOME}/go"
@@ -42,20 +39,11 @@ export PATH=$PATH:"${GOPATH}/bin"
 # node env vars
 export NVM_DIR=~/.nvm
 
-# git aliases
-alias gcommits="git shortlog -n --since='one week'"
-alias gbranch="git for-each-ref --sort=-committerdate --format '%(color:green)%(authorname)%(color:reset)%09%(committerdate)%09%(color:green)%(refname)%(color:reset)%09%(subject)' refs/heads/"
-
 # Yes I want to quit, no I don't want to save anything
 alias R="R --no-save"
 
 # Helps with ipython in a virtual environment
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-
-# "unlimited" ~/.bash_history with timestamps
-export HISTTIMEFORMAT="%F %T "
-export HISTSIZE= HISTFILESIZE=
-shopt -s histappend
 
 # bash completion
 bind "set completion-ignore-case on"

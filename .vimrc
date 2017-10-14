@@ -11,13 +11,15 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'sjl/badwolf'                      " New color scheme!
+Plugin 'w0rp/ale'                         " Autolint
 Plugin 'ctrlpvim/ctrlp.vim'               " Fuzzy file search
-Plugin 'vim-airline/vim-airline'          " Pretty bar on the bottom
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'itchyny/lightline.vim'            " Status bar
 Plugin 'mileszs/ack.vim'                  " ctrl+F to search
-Plugin 'w0rp/ale'                         " Python linting
 Plugin 'Raimondi/delimitMate'             " Automate matching delimiters
 Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'airblade/vim-gitgutter'           " See changes in git repos
+Plugin 'tomtom/tcomment_vim'              " Comment lines with gc
 
 call vundle#end()
 filetype plugin indent on
@@ -32,6 +34,7 @@ syntax enable         " Turn on syntax highlighting allowing local overrides
 set background=dark
 set encoding=utf-8    " Set default encoding to UTF-8
 set autoindent
+colorscheme badwolf
 
 ""
 "" netrw
@@ -115,12 +118,6 @@ set directory^=~/.vim/_temp//      " where to put swap files.
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 ""
-"" Powerline settings
-""
-
-let g:Powerline_symbols = 'fancy'
-
-""
 "" Use ag for code search
 ""
 
@@ -131,13 +128,14 @@ nmap <C-F> :Ack<space>
 "" Set up automatic linter
 ""
 
-let g:ale_lint_delay = 3000
-let g:ale_python_pylint_executable = 'python -m pylint'
-
+let g:ale_lint_on_text_changed = 'never'                 " lint on save
+let g:ale_lint_on_enter = 0                              " don't lint when opening a file
+let g:ale_linters = {
+\    'javascript': ['eslint'],
+\}
 
 ""
 "" Highlight over 100 characters long
 ""
+set colorcolumn=100
 
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%100v.\+/
