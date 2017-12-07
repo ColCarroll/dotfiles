@@ -26,11 +26,12 @@ alias tl="tmux list-session"
 alias tn="tmux new-session -s"
 
 # virtualenv aliases
-function virtualenv_name { echo "${PWD##*/}" ; }
-function vn { pyenv virtualenv "$(virtualenv_name)" ; }
-function va { pyenv activate "$(virtualenv_name)" ; }
-alias vd="pyenv deactivate"
-function vdd { pyenv uninstall "$(virtualenv_name)" ; }
+function virtualenv_name { echo "${PWD##*/}${1-3.6}" ; }
+function vn { conda create --name "$(virtualenv_name $1)" python=${1-3.6} ; }
+function va { source activate "$(virtualenv_name $1)" ; }
+alias vd="source deactivate"
+alias vl="conda info --envs"
+function vdd { conda remove --name "$(virtualenv_name $1)" --all ; }
 
 # setup go
 export GOPATH="${HOME}/go"
@@ -48,12 +49,6 @@ alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance
 # bash completion
 bind "set completion-ignore-case on"
 bind "set show-all-if-ambiguous on"
-
-# sets up pyenv if it is installed
-# `brew install pyenv`
-export PYENV_ROOT=/usr/local/var/pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-if which pyenv-virtualenv > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 # add install-specific stuff to .localrc
 source "${HOME}/.localrc"

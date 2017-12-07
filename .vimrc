@@ -20,6 +20,7 @@ Plugin 'Raimondi/delimitMate'             " Automate matching delimiters
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'airblade/vim-gitgutter'           " See changes in git repos
 Plugin 'tomtom/tcomment_vim'              " Comment lines with gc
+Plugin 'fatih/vim-go'                     " Go support
 
 call vundle#end()
 filetype plugin indent on
