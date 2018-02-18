@@ -21,6 +21,7 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'airblade/vim-gitgutter'           " See changes in git repos
 Plugin 'tomtom/tcomment_vim'              " Comment lines with gc
 Plugin 'fatih/vim-go'                     " Go support
+Plugin 'junegunn/goyo.vim'                " Distraction free writing
 
 call vundle#end()
 filetype plugin indent on
