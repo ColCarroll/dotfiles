@@ -69,13 +69,13 @@ alias tn="tmux new-session -s"
 function virtualenv_name { echo "${PWD##*/}${1-3.6}" ; }
 function vn { conda create --name "$(virtualenv_name $1)" python=${1-3.6} ; }
 function va { source activate "$(virtualenv_name $1)" ; }
-alias vd="source deactivate"
+alias vd="conda deactivate"
 alias vl="conda info --envs"
 function vdd { conda remove --name "$(virtualenv_name $1)" --all ; }
 
 # setup go
 export GOPATH="${HOME}/go"
-export PATH=$PATH:"${GOPATH}/bin"
+export PATH=$PATH:/usr/local/go/bin:"${GOPATH}/bin"
 
 # Yes I want to quit, no I don't want to save anything
 alias R="R --no-save"
@@ -111,3 +111,7 @@ export PATH="$HOME/miniconda3/bin:$PATH"
 
 # add install-specific stuff to .localrc
 source "${HOME}/.localrc"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
